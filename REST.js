@@ -12,11 +12,11 @@ REST_ROUTER.prototype.handleRoutes = function(router, connection, md5){
 		});
 	});
 
-	// Cadastra usuario
+	// Cadastrar usuario
 	router.post("/users", function(req, res){
 		console.log(req.body);
 		let query = "INSERT INTO ??(??,??) VALUES (?,?)";
-		let table = ["user_login","user_email","user_password", req.query.email, md5(req.query.password)];
+		let table = ["user_login","user_email","user_password", req.body.email, md5(req.body.password)];
 		query = mysql.format(query, table);
 		console.log(query)
 		connection.query(query, function(err, rows){
